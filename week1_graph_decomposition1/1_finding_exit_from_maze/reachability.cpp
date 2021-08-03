@@ -5,15 +5,15 @@ using std::vector;
 using std::pair;
 
 
-int dfs(vector<vector<int> >& adj, int src, int dst, vector<int> explored) {
+int dfs(vector<vector<int> >& adj, int src, int dst, vector<int>& explored) {
    
     if(src == dst) return 1;
 
     explored[src] = 1;
 
     for (size_t i = 0; i < adj[src].size(); i++) {
-        if (explored[adj[src][i]] == 0)
-            return dfs(adj, adj[src][i], dst, explored);
+        if (explored[adj[src][i]] == 0 && dfs(adj, adj[src][i], dst, explored) == 1)
+            return 1;
     }
 
     return 0;
