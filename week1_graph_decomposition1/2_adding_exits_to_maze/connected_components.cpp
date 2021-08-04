@@ -9,7 +9,7 @@ void dfs(vector<vector<int> >& adj, int node, vector<int>& explored) {
     explored[node] = 1;
     for (size_t i = 0; i < adj[node].size(); i++) {
         if (explored[adj[node][i]] == 0) {
-            return dfs(adj, adj[node][i], explored);
+            dfs(adj, adj[node][i], explored);
         }
     }
 }
